@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import { Outlet } from 'react-router-dom'
 import { Sidebar } from './Sidebar'
 import { Header } from './Header'
 import { Breadcrumb } from './Breadcrumb'
 import { SessionTimeoutWarning, useSessionTimeoutWarning } from '../auth/SessionTimeoutWarning'
 
-export function DashboardLayout() {
+interface DashboardLayoutProps {
+  children: React.ReactNode
+}
+
+export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const {
     showWarning,
@@ -27,7 +30,7 @@ export function DashboardLayout() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <Breadcrumb />
             <div className="mt-6">
-              <Outlet />
+              {children}
             </div>
           </div>
         </main>

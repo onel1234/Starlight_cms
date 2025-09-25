@@ -49,3 +49,24 @@ export interface AuthResponse {
   token: string
   refreshToken: string
 }
+
+export interface RecoveryAction {
+  label: string
+  action: 'retry' | 'login' | 'contact' | 'navigate'
+  target?: string
+}
+
+export interface AuthError {
+  type: 'credentials' | 'network' | 'account' | 'session' | 'permission'
+  message: string
+  details?: string
+  recoveryActions?: RecoveryAction[]
+}
+
+export interface SessionValidation {
+  isValid: boolean
+  expiresAt: number
+  warningThreshold: number
+  canExtend: boolean
+  errors?: string[]
+}

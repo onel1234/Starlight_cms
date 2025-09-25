@@ -1,11 +1,11 @@
 import { UserRole } from '../../types/auth'
-import { 
-  HomeIcon, 
-  FolderIcon, 
-  CheckSquareIcon, 
-  PackageIcon, 
-  DollarSignIcon, 
-  BarChart3Icon, 
+import {
+  HomeIcon,
+  FolderIcon,
+  CheckSquareIcon,
+  PackageIcon,
+  DollarSignIcon,
+  BarChart3Icon,
   UsersIcon,
   FileTextIcon,
   MessageSquareIcon,
@@ -32,25 +32,25 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
   },
   {
     name: 'Projects',
-    href: '/projects',
+    href: '/?page=projects',
     icon: FolderIcon,
     roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Employee', 'Customer'],
     children: [
       {
         name: 'All Projects',
-        href: '/projects',
+        href: '/?page=projects',
         icon: FolderIcon,
         roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Employee']
       },
       {
         name: 'My Projects',
-        href: '/projects/my',
+        href: '/?page=projects&view=my',
         icon: FolderIcon,
         roles: ['Customer']
       },
       {
         name: 'Create Project',
-        href: '/projects/create',
+        href: '/?page=projects&action=create',
         icon: FolderIcon,
         roles: ['Director', 'Project Manager']
       }
@@ -58,25 +58,25 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
   },
   {
     name: 'Tasks',
-    href: '/tasks',
+    href: '/?page=tasks',
     icon: CheckSquareIcon,
     roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Employee'],
     children: [
       {
         name: 'All Tasks',
-        href: '/tasks',
+        href: '/?page=tasks',
         icon: CheckSquareIcon,
         roles: ['Director', 'Project Manager']
       },
       {
         name: 'My Tasks',
-        href: '/tasks/my',
+        href: '/?page=tasks&view=my',
         icon: CheckSquareIcon,
         roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Employee']
       },
       {
         name: 'Create Task',
-        href: '/tasks/create',
+        href: '/?page=tasks&action=create',
         icon: CheckSquareIcon,
         roles: ['Director', 'Project Manager']
       }
@@ -84,31 +84,31 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
   },
   {
     name: 'Inventory',
-    href: '/inventory',
+    href: '/?page=inventory',
     icon: PackageIcon,
     roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Employee'],
     children: [
       {
         name: 'Products',
-        href: '/inventory/products',
+        href: '/?page=inventory&section=products',
         icon: PackageIcon,
         roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Employee']
       },
       {
         name: 'Categories',
-        href: '/inventory/categories',
+        href: '/?page=inventory&section=categories',
         icon: PackageIcon,
         roles: ['Director', 'Project Manager']
       },
       {
         name: 'Suppliers',
-        href: '/inventory/suppliers',
+        href: '/?page=inventory&section=suppliers',
         icon: TruckIcon,
         roles: ['Director', 'Project Manager', 'Quantity Surveyor']
       },
       {
         name: 'Stock Movements',
-        href: '/inventory/movements',
+        href: '/?page=inventory&section=movements',
         icon: PackageIcon,
         roles: ['Director', 'Project Manager', 'Quantity Surveyor']
       }
@@ -116,31 +116,31 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
   },
   {
     name: 'Financial',
-    href: '/financial',
+    href: '/?page=financial',
     icon: DollarSignIcon,
     roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Sales Manager'],
     children: [
       {
         name: 'Quotations',
-        href: '/financial/quotations',
+        href: '/?page=financial&section=quotations',
         icon: FileTextIcon,
         roles: ['Director', 'Quantity Surveyor', 'Sales Manager']
       },
       {
         name: 'Purchase Orders',
-        href: '/financial/purchase-orders',
+        href: '/?page=financial&section=purchase-orders',
         icon: ClipboardListIcon,
         roles: ['Director', 'Project Manager', 'Quantity Surveyor']
       },
       {
         name: 'Invoices',
-        href: '/financial/invoices',
+        href: '/?page=financial&section=invoices',
         icon: CreditCardIcon,
         roles: ['Director', 'Project Manager', 'Quantity Surveyor']
       },
       {
         name: 'Payments',
-        href: '/financial/payments',
+        href: '/?page=financial&section=payments',
         icon: DollarSignIcon,
         roles: ['Director', 'Project Manager']
       }
@@ -148,31 +148,31 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
   },
   {
     name: 'Tenders',
-    href: '/tenders',
+    href: '/?page=tenders',
     icon: ClipboardListIcon,
     roles: ['Director', 'Sales Manager', 'Supplier'],
     children: [
       {
         name: 'All Tenders',
-        href: '/tenders',
+        href: '/?page=tenders',
         icon: ClipboardListIcon,
         roles: ['Director', 'Sales Manager']
       },
       {
         name: 'Available Tenders',
-        href: '/tenders/available',
+        href: '/?page=tenders&view=available',
         icon: ClipboardListIcon,
         roles: ['Supplier']
       },
       {
         name: 'My Submissions',
-        href: '/tenders/submissions',
+        href: '/?page=tenders&view=submissions',
         icon: ClipboardListIcon,
         roles: ['Supplier']
       },
       {
         name: 'Create Tender',
-        href: '/tenders/create',
+        href: '/?page=tenders&action=create',
         icon: ClipboardListIcon,
         roles: ['Director', 'Sales Manager']
       }
@@ -180,25 +180,25 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
   },
   {
     name: 'Feedback',
-    href: '/feedback',
+    href: '/?page=feedback',
     icon: MessageSquareIcon,
     roles: ['Director', 'Customer Success Manager', 'Customer'],
     children: [
       {
         name: 'All Feedback',
-        href: '/feedback',
+        href: '/?page=feedback',
         icon: MessageSquareIcon,
         roles: ['Director', 'Customer Success Manager']
       },
       {
         name: 'Submit Feedback',
-        href: '/feedback/submit',
+        href: '/?page=feedback&action=submit',
         icon: MessageSquareIcon,
         roles: ['Customer']
       },
       {
         name: 'My Feedback',
-        href: '/feedback/my',
+        href: '/?page=feedback&view=my',
         icon: MessageSquareIcon,
         roles: ['Customer']
       }
@@ -206,25 +206,25 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
   },
   {
     name: 'Documents',
-    href: '/documents',
+    href: '/?page=documents',
     icon: FolderOpenIcon,
     roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Sales Manager', 'Customer Success Manager', 'Employee'],
     children: [
       {
         name: 'All Documents',
-        href: '/documents',
+        href: '/?page=documents',
         icon: FolderOpenIcon,
         roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Sales Manager', 'Customer Success Manager', 'Employee']
       },
       {
         name: 'Upload Documents',
-        href: '/documents/upload',
+        href: '/?page=documents&action=upload',
         icon: FileTextIcon,
         roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Sales Manager', 'Customer Success Manager', 'Employee']
       },
       {
         name: 'Manage Folders',
-        href: '/documents/folders',
+        href: '/?page=documents&section=folders',
         icon: FolderIcon,
         roles: ['Director', 'Project Manager']
       }
@@ -232,43 +232,43 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
   },
   {
     name: 'Reports',
-    href: '/reports',
+    href: '/?page=reports',
     icon: BarChart3Icon,
     roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Sales Manager', 'Customer Success Manager'],
     children: [
       {
         name: 'Dashboard',
-        href: '/reports',
+        href: '/?page=reports',
         icon: BarChart3Icon,
         roles: ['Director', 'Project Manager', 'Quantity Surveyor', 'Sales Manager', 'Customer Success Manager']
       },
       {
         name: 'Project Reports',
-        href: '/reports/projects',
+        href: '/?page=reports&section=projects',
         icon: BarChart3Icon,
         roles: ['Director', 'Project Manager']
       },
       {
         name: 'Financial Reports',
-        href: '/reports/financial',
+        href: '/?page=reports&section=financial',
         icon: BarChart3Icon,
         roles: ['Director', 'Quantity Surveyor']
       },
       {
         name: 'Inventory Reports',
-        href: '/reports/inventory',
+        href: '/?page=reports&section=inventory',
         icon: BarChart3Icon,
         roles: ['Director', 'Project Manager']
       },
       {
         name: 'Sales Reports',
-        href: '/reports/sales',
+        href: '/?page=reports&section=sales',
         icon: BarChart3Icon,
         roles: ['Director', 'Sales Manager']
       },
       {
         name: 'Customer Reports',
-        href: '/reports/customers',
+        href: '/?page=reports&section=customers',
         icon: BarChart3Icon,
         roles: ['Director', 'Customer Success Manager']
       }
@@ -276,25 +276,25 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
   },
   {
     name: 'Users',
-    href: '/users',
+    href: '/?page=users',
     icon: UsersIcon,
     roles: ['Director'],
     children: [
       {
         name: 'All Users',
-        href: '/users',
+        href: '/?page=users',
         icon: UsersIcon,
         roles: ['Director']
       },
       {
         name: 'Add User',
-        href: '/users/create',
+        href: '/?page=users&action=create',
         icon: UsersIcon,
         roles: ['Director']
       },
       {
         name: 'Roles & Permissions',
-        href: '/users/roles',
+        href: '/?page=users&section=roles',
         icon: UsersIcon,
         roles: ['Director']
       }
@@ -316,15 +316,29 @@ export function hasAccessToRoute(route: string, userRole: UserRole): boolean {
   if (route === '/profile') {
     return true
   }
+
+  // Handle external portal routes with query parameters
+  const url = new URL(route, 'http://localhost') // Use dummy base for parsing
+  const searchParams = url.searchParams
   
-  // Handle external portal routes
+  // Check for customer portal access
+  if (searchParams.has('customer') && userRole === 'Customer') {
+    return true
+  }
+  
+  // Check for supplier portal access
+  if (searchParams.has('supplier') && userRole === 'Supplier') {
+    return true
+  }
+
+  // Handle legacy external portal routes (direct paths)
   if (route.startsWith('/customer') && userRole === 'Customer') {
     return true
   }
   if (route.startsWith('/supplier') && userRole === 'Supplier') {
     return true
   }
-  
+
   // Handle internal navigation routes
   const checkItem = (item: NavigationItem): boolean => {
     if (item.href === route && item.roles.includes(userRole)) {
@@ -350,7 +364,7 @@ export function getRoleDisplayName(role: UserRole): string {
     'Customer': 'Customer',
     'Supplier': 'Supplier'
   }
-  
+
   return roleNames[role] || role
 }
 
@@ -365,6 +379,6 @@ export function getRoleColor(role: UserRole): string {
     'Customer': 'bg-indigo-100 text-indigo-800',
     'Supplier': 'bg-yellow-100 text-yellow-800'
   }
-  
+
   return roleColors[role] || 'bg-gray-100 text-gray-800'
 }

@@ -12,18 +12,16 @@ import { LoginCredentialsCard } from '../../components/auth/LoginCredentialsCard
 export function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showCredentialsCard, setShowCredentialsCard] = useState(false)
-  const { login, isAuthenticated, isLoading } = useAuth()
+  const { login, isAuthenticated, isLoading, user, getRedirectPath, authError, clearAuthError } = useAuth()
   const location = useLocation()
 
-  const { user } = useAuth()
-
-  // Determine redirect path based on user role
-  const getRedirectPath = () => {
+  // Determine redirect path based on user role with query parameters
+  const determineRedirectPath = () => {
     if (location.state?.from?.pathname) {
       return location.state.from.pathname
     }
 
-    // Get user data from localStorage if not available in context yet
+    // Get user data from context or localStorage
     const userData = user || (() => {
       try {
         const storedUser = localStorage.getItem('user_data')
@@ -33,13 +31,11 @@ export function LoginPage() {
       }
     })()
 
-    if (userData?.role === 'Customer') {
-      return '/customer'
-    } else if (userData?.role === 'Supplier') {
-      return '/supplier'
-    } else {
-      return '/'
+    if (userData?.role) {
+      return getRedirectPath(userData.role)
     }
+
+    return '/'
   }
 
   const {
@@ -57,18 +53,38 @@ export function LoginPage() {
   }
 
   if (isAuthenticated) {
-    return <Navigate to={getRedirectPath()} replace />
+    return <Navigate to={determineRedirectPath()} replace />
   }
 
   const onSubmit = async (data: LoginCredentials) => {
     try {
+      clearAuthError() // Clear any previous errors
       await login(data.email, data.password)
       // The redirect will happen automatically via the Navigate component
       // when isAuthenticated becomes true
     } catch (error) {
-      setError('root', {
-        message: 'Invalid email or password'
-      })
+      // Error is now handled by AuthContext and available via authError
+      console.error('Login failed:', error)
+    }
+  }
+
+  const handleRecoveryAction = (action: string, target?: string) => {
+    switch (action) {
+      case 'retry':
+        clearAuthError()
+        break
+      case 'login':
+        clearAuthError()
+        break
+      case 'navigate':
+        if (target) {
+          window.location.href = target
+        }
+        break
+      case 'contact':
+        // In a real app, this would open a support modal or redirect to support
+        alert('Please contact support at support@starlightconstructions.com or call +1-555-SUPPORT')
+        break
     }
   }
 
@@ -160,9 +176,32 @@ export function LoginPage() {
                 </div>
               </div>
 
-              {errors.root && (
+              {(errors.root || authError) && (
                 <div className="rounded-md bg-red-50 p-4">
-                  <p className="text-sm text-red-800">{errors.root.message}</p>
+                  <div className="flex">
+                    <div className="flex-1">
+                      <h3 className="text-sm font-medium text-red-800">
+                        {authError?.message || errors.root?.message}
+                      </h3>
+                      {authError?.details && (
+                        <p className="mt-1 text-sm text-red-700">{authError.details}</p>
+                      )}
+                      {authError?.recoveryActions && authError.recoveryActions.length > 0 && (
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {authError.recoveryActions.map((action, index) => (
+                            <button
+                              key={index}
+                              type="button"
+                              onClick={() => handleRecoveryAction(action.action, action.target)}
+                              className="inline-flex items-center px-3 py-1 border border-red-300 text-xs font-medium rounded text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                            >
+                              {action.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               )}
 
